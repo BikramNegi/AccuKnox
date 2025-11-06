@@ -4,16 +4,14 @@ import dashboardData from '../dashboardData.json';
 let storedDashboardState = null;
 
 try {
-    storedDashboardState = localStorage.getItem('dashboardState');
+    storedDashboardState = JSON.parse(localStorage.getItem('dashboardState'));
 } catch (error) {
     console.log(error);
 }
 
-const initialState = storedDashboardState
-    ? JSON.parse(storedDashboardState)
-    : {
-        categories: dashboardData.categories,
-    };
+const initialState = storedDashboardState ?? {
+    categories: dashboardData.categories,
+};
 
 const dashboardSlice = createSlice({
     name: 'dashboard',

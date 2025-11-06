@@ -1,0 +1,32 @@
+.appHeader {
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbs,
+.breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6e6e6e;
+}
+
+.app_header_right_Menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search_box {
+  border: 1px solid #6e6e6e;
+  border-radius: 5px;
+  padding: 5px;
+  width: 400px;
+}

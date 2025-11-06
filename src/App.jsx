@@ -1,7 +1,14 @@
 import "./App.css";
+import AppHeader from "./components/AppHeader";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return <h1>Dashboard</h1>;
+  return (
+    <>
+      <AppHeader />
+      <Dashboard />
+    </>
+  );
 }
 
 export default App;
