@@ -1,0 +1,22 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "CSPM Executive Dashboard",
+      "widgets": [
+        { "id": 101, "name": "Widget A", "text": "Sample Text A" },
+        { "id": 102, "name": "Widget B", "text": "Sample Text B" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "CWPP Dashboard",
+      "widgets": [{ "id": 201, "name": "Widget C", "text": "Sample Text C" }]
+    },
+    {
+      "id": 3,
+      "name": "Registry Scan",
+      "widgets": [{ "id": 301, "name": "Widget D", "text": "Sample Text D" }]
+    }
+  ]
+}
