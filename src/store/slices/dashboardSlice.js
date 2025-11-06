@@ -26,7 +26,7 @@ const dashboardSlice = createSlice({
             const { categoryId, widgetId } = action.payload;
             const category = state.categories.find((eachCategory) => eachCategory.id === categoryId);
             if (category)
-                category.widgets = category.widgets.filter((eachWidget) => eachWidget.id !== widgetId);
+                category.widgets = category.widgets.map((eachWidget) => eachWidget.id == widgetId ? { ...eachWidget, active: false } : eachWidget);
         },
     },
 });

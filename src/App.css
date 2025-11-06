@@ -75,3 +75,34 @@
   font-size: 0.7rem;
   height: 1.7rem;
 }
+
+.category {
+  margin: 0px 40px 20px;
+}
+
+.category_widgets {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #6e6e6e;
+}
+
+.category_widget {
+  flex: 1;
+  max-width: 400px;
+  height: 200px;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.widget_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget_header_close_button {
+  cursor: pointer;
+}
