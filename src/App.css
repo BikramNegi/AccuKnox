@@ -80,16 +80,20 @@
   margin: 0px 40px 20px;
 }
 
+.category_header {
+  margin-bottom: 0.4rem;
+}
+
 .category_widgets {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   color: #6e6e6e;
+  flex-wrap: wrap;
 }
 
 .category_widget {
-  flex: 1;
-  max-width: 400px;
+  flex: 0 0 400px;
   height: 200px;
   padding: 0.7rem 1rem;
   border-radius: 10px;
@@ -105,4 +109,230 @@
 
 .widget_header_close_button {
   cursor: pointer;
+}
+
+.AddWidgetModalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.AddWidgetModal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.AddWidgetModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.AddWidgetModalHeaderText {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #6e6e6e;
+}
+
+.AddWidgetModalCloseButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #6e6e6e;
+  font-size: 1.2rem;
+}
+
+.AddWidgetModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.AddWidgetModalFormInput,
+.AddWidgetModalFormTextArea,
+.AddWidgetModalFormSelect {
+  border: 1px solid #6e6e6e;
+  border-radius: 5px;
+  padding: 5px;
+  color: #6e6e6e;
+}
+
+.AddWidgetModalFormTextArea {
+  resize: none;
+  height: 100px;
+}
+.AddWidgetModalFormSelect {
+  cursor: pointer;
+}
+
+.AddWidgetModalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.AddWidgetModalFormButton {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.AddWidgetModalFormButtonSubmit {
+  background-color: rgb(9, 9, 151);
+}
+
+.AddWidgetModalFormButtonCancel {
+  background: none;
+  border: 1px solid #6e6e6e;
+  color: #6e6e6e;
+}
+
+.AddWidgetAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddWidgetActionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 5px;
+  border: 0.5px solid #6e6e6e91;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #6e6e6e;
+}
+
+.AddWidgetActionDrawerContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: end;
+  z-index: 20;
+}
+
+.AddWidgetActionDrawer {
+  height: 100%;
+  background-color: #fff;
+  width: 600px;
+}
+
+.AddWidgetActionDrawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: rgb(9, 9, 151);
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.AddWidgetActionDrawerCloseButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.AddWidgetActionDrawerBody {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Adjust based on header height */
+}
+
+.AddWidgetActionDrawerBodyText {
+  font-size: 0.8rem;
+}
+.AddWidgetActionDrawerBodyWidgets {
+  flex: 1;
+  overflow-y: auto;
+}
+.category_tabs {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.drawer_category_header {
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  color: #6e6e6e;
+  border-bottom: 0.5px solid #d6cccc;
+  cursor: pointer;
+}
+
+.drawer_active_tab {
+  border-bottom: 1.6px solid rgb(9, 9, 151);
+  color: rgb(9, 9, 151);
+}
+
+.drawer_category_widgets {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.drawer_category_widget {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid #6e6e6e91;
+  padding: 5px;
+}
+
+.drawer_active_widget_input {
+  accent-color: rgb(9, 9, 151);
+}
+
+.drawer_category_widget_text {
+  font-size: 0.7rem;
+}
+
+.AddWidgetActionDrawerBodyButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.AddWidgetActionDrawerBodyButton {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.AddWidgetActionDrawerBodyButtonCancel {
+  background: none;
+  border: 1px solid rgb(9, 9, 151);
+  color: rgb(9, 9, 151);
+}
+
+.AddWidgetActionDrawerBodyButtonSubmit {
+  background-color: rgb(9, 9, 151);
 }
