@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { FaPlus } from "react-icons/fa6";
 
 const AddWidgetButton = ({ showModal }) => {
@@ -12,6 +13,10 @@ const AddWidgetButton = ({ showModal }) => {
       </button>
     </div>
   );
+};
+
+AddWidgetButton.propTypes = {
+  showModal: PropTypes.func.isRequired,
 };
 
 export default AddWidgetButton;

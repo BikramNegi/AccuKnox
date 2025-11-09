@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import useDebounce from "../hooks/useDebounce";
 import { useSelector } from "react-redux";
 
@@ -10,19 +10,21 @@ const SearchBar = ({
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const categories = useSelector((state) => state.dashboard.categories);
+  const categoriesRef = useRef(categories);
 
-  const searchHandler = useCallback(
-    (searchTerm) => {
-      setSearchResults([]);
-      categories.forEach((category) => {
-        const filteredWidgets = category.widgets.filter((widget) =>
-          widget.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setSearchResults((prev) => [...prev, ...filteredWidgets]);
-      });
-    },
-    [categories]
-  );
+  useEffect(() => {
+    categoriesRef.current = categories;
+  }, [categories]);
+
+  const searchHandler = useCallback((searchTerm) => {
+    setSearchResults([]);
+    categoriesRef.current.forEach((category) => {
+      const filteredWidgets = category.widgets.filter((widget) =>
+        widget.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults((prev) => [...prev, ...filteredWidgets]);
+    });
+  }, []);
 
   const handleSearch = useDebounce(searchHandler, 500);
 

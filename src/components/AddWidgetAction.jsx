@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { FaPlus } from "react-icons/fa6";
 
 const AddWidgetAction = ({ openDrawer }) => {
@@ -9,6 +10,10 @@ const AddWidgetAction = ({ openDrawer }) => {
       </button>
     </div>
   );
+};
+
+AddWidgetAction.propTypes = {
+  openDrawer: PropTypes.func.isRequired,
 };
 
 export default AddWidgetAction;

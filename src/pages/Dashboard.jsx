@@ -1,11 +1,14 @@
-import Categories from "../components/Categories";
+import { lazy, Suspense } from "react";
+const Categories = lazy(() => import("../components/Categories"));
 import DashBoardHeader from "../components/DashBoardHeader";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
       <DashBoardHeader />
-      <Categories />
+      <Suspense fallback={<div>Loading Categories...</div>}>
+        <Categories />
+      </Suspense>
     </div>
   );
 };

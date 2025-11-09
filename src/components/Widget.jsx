@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 import { FaXmark } from "react-icons/fa6";
 import { removeWidget } from "../store/slices/dashboardSlice";
 
@@ -35,4 +35,4 @@ Widget.propTypes = {
     .isRequired,
 };
 
-export default Widget;
+export default memo(Widget);

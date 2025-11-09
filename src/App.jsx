@@ -1,12 +1,15 @@
+import { lazy, Suspense } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader";
-import Dashboard from "./pages/Dashboard";
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 function App() {
   return (
     <div className="app">
       <AppHeader />
-      <Dashboard />
+      <Suspense fallback={<div>Loading Dashboard...</div>}>
+        <Dashboard />
+      </Suspense>
     </div>
   );
 }

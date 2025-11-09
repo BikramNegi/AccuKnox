@@ -1,30 +1,34 @@
 import { useSelector } from "react-redux";
-import { useMemo, useState } from "react";
+import { createSelector } from "@reduxjs/toolkit";
+import { useState, useCallback, memo, lazy, Suspense } from "react";
 import Widget from "./Widget";
 import AddWidgetAction from "./AddWidgetAction";
-import AddWidgetActionDrawer from "./AddWidgetActionDrawer";
+const AddWidgetActionDrawer = lazy(() => import("./AddWidgetActionDrawer"));
+
+const selectActiveWidgetsByCategory = createSelector(
+  (state) => state.dashboard.categories,
+  (categories) =>
+    categories.map((category) => ({
+      ...category,
+      widgets: category.widgets.filter((widget) => widget.active),
+    }))
+);
 
 const Categories = () => {
-  const categories = useSelector((state) => state.dashboard.categories);
+  const activeWidgetsByCategory = useSelector(selectActiveWidgetsByCategory);
   const [showAddWidgetActionDrawer, setShowAddWidgetActionDrawer] =
     useState(false);
 
-  const showAddWidgetActionDrawerHandler = () => {
+  const showAddWidgetActionDrawerHandler = useCallback(() => {
     setShowAddWidgetActionDrawer((prev) => !prev);
-  };
-
-  const activeWidgetsByCategory = useMemo(() => {
-    const active = categories.map((category) => ({
-      ...category,
-      widgets: category.widgets.filter((widget) => widget.active),
-    }));
-    return active;
-  }, [categories]);
+  }, []);
 
   return (
     <>
       {showAddWidgetActionDrawer && (
-        <AddWidgetActionDrawer onClose={showAddWidgetActionDrawerHandler} />
+        <Suspense fallback={<div>Loading AddWidgetActionDrawer...</div>}>
+          <AddWidgetActionDrawer onClose={showAddWidgetActionDrawerHandler} />
+        </Suspense>
       )}
       {activeWidgetsByCategory.map((eachCategory) => {
         return (
@@ -50,4 +54,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default memo(Categories);

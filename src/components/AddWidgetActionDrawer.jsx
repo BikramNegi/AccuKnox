@@ -1,7 +1,8 @@
 import { FaXmark } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateAllWidgets } from "../store/slices/dashboardSlice";
+import PropTypes from "prop-types";
 
 const AddWidgetActionDrawer = ({ onClose }) => {
   const categories = useSelector((state) => state.dashboard.categories);
@@ -11,18 +12,18 @@ const AddWidgetActionDrawer = ({ onClose }) => {
     allCategories[0]?.id || null
   );
 
-  const handleActiveTab = (e) => {
+  const handleActiveTab = useCallback((e) => {
     setActiveCategoryId(Number.parseInt(e.target.id));
-  };
+  }, []);
 
-  const activeCategoryWidgets = () => {
+  const activeCategoryWidgets = useMemo(() => {
     const category = allCategories.find(
       (eachCategory) => eachCategory.id === activeCategoryId
     );
     return category ? category.widgets : [];
-  };
+  }, [allCategories, activeCategoryId]);
 
-  const toggleWidgetActive = (categories, widgetId) => {
+  const toggleWidgetActive = useCallback((categories, widgetId) => {
     return categories.map((eachCategory) => {
       const widgets = eachCategory.widgets.map((eachWidget) =>
         eachWidget.id === widgetId
@@ -31,19 +32,19 @@ const AddWidgetActionDrawer = ({ onClose }) => {
       );
       return { ...eachCategory, widgets };
     });
-  };
+  }, []);
 
-  const handleCheckboxChange = (widgetId) => {
-    setAllCategories((prev) => {
-      const updatedCategories = toggleWidgetActive(prev, widgetId);
-      return updatedCategories;
-    });
-  };
+  const handleCheckboxChange = useCallback(
+    (widgetId) => {
+      setAllCategories((prev) => toggleWidgetActive(prev, widgetId));
+    },
+    [toggleWidgetActive]
+  );
 
-  const handleDrawerSubmit = () => {
+  const handleDrawerSubmit = useCallback(() => {
     dispatch(updateAllWidgets([...allCategories]));
     onClose();
-  };
+  }, [dispatch, allCategories, onClose]);
 
   useEffect(() => {
     setAllCategories(categories);
@@ -84,7 +85,7 @@ const AddWidgetActionDrawer = ({ onClose }) => {
               })}
             </div>
             <div className="drawer_category_widgets">
-              {activeCategoryWidgets().map(({ id, active, name }) => {
+              {activeCategoryWidgets.map(({ id, active, name }) => {
                 return (
                   <div key={id} className="drawer_category_widget">
                     <input
@@ -123,4 +124,8 @@ const AddWidgetActionDrawer = ({ onClose }) => {
   );
 };
 
-export default AddWidgetActionDrawer;
+AddWidgetActionDrawer.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
+
+export default memo(AddWidgetActionDrawer);
