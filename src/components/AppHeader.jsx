@@ -1,4 +1,3 @@
-
 import Breadcrumbs from "./Breadcrumbs";
 import SearchBar from "./SearchBar";
 import UserMenu from "./UserMenu";
